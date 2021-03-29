@@ -12,7 +12,6 @@ RegisterCommand("idoff", function(source, args, rawCommand)
 	local 
     if hasPermission(xPlayer) then
 		TriggerClientEvent("dontshowid", -1, source)
-		--TriggerClientEvent('ESX.ShowNotification', "~w~ID's have been turned ~r~off~w~.")
 		TriggerClientEvent('chatMessage', source, "[oaken's ID] ID's have been turned off.")
 	end
 end)
@@ -20,7 +19,6 @@ RegisterCommand("idon", function(source, args, rawCommand)
 	local xPlayer = ESX.GetPlayerFromId(source)
     if hasPermission(xPlayer) then
 	    TriggerClientEvent("showid", -1, source)
-	    --TriggerClientEvent('ESX.ShowNotification', "~w~ID's have been turned ~g~on~w~.")
 		TriggerClientEvent('chatMessage', source, "[oaken's ID] ID's have been turned on.")
     end
 end)
@@ -48,8 +46,8 @@ function stringsplit(inputstr, sep)
     return t
 end
 
-function havePermission(xPlayer, exclude)	-- you can exclude rank(s) from having permission to specific commands 	[exclude only take tables]
-	if exclude and type(exclude) ~= 'table' then exclude = nil;print("^3[esx_admin] ^1ERROR ^0exclude argument is not table..^0") end	-- will prevent from errors if you pass wrong argument
+function havePermission(xPlayer, exclude)
+	if exclude and type(exclude) ~= 'table' then exclude = nil;print("^3[oakens-id] ^1ERROR ^0argument is not table..^0") end
 
 	local playerGroup = xPlayer.getGroup()
 	for k,v in pairs(Config.adminRanks) do
